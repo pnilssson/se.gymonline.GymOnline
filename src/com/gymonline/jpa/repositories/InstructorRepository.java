@@ -12,6 +12,7 @@ public class InstructorRepository {
     @PersistenceContext(unitName = "GymOnlinePU")
     private EntityManager em;
 
+
     public List<Instructor> getById(int id){
         Query query = em.createQuery("SELECT i FROM Instructor i WHERE i.instructorSocialSecurityNumber = :instructorSocialSecurityNumber")
                 .setParameter("instructorSocialSecurityNumber", id);
@@ -22,4 +23,9 @@ public class InstructorRepository {
         Query query = em.createQuery("SELECT i from Instructor i");
         return query.getResultList();
     }
+    public Instructor create (Instructor i){
+        em.persist(i);
+        return i;
+    }
 }
+

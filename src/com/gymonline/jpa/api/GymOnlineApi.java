@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @ApplicationPath("/gymonline")
@@ -74,6 +75,15 @@ public class GymOnlineApi extends Application {
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Instructor> getInstructorById(@PathParam("id") int id){
         return ir.getById(id);
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/instructors")
+    public Response postInstructors(Instructor i){
+        i = ir.create(i);
+        return Response.ok(i.getInstructorSocialSecurityNumber() + " created").build();
     }
 
 
