@@ -22,7 +22,11 @@ public class GymRepository {
         return query.getResultList();
     }
 
+    //SELECT Gym_Name, Gym_Rating, Gym_Adress, Gym_Zip_Code, Gym_City, Activity_Rating, Activity_Price, Activity_Popularity, Activity_Date, Activity_Duration, Activity_Type_Name FROM Gym
+    //INNER JOIN Activity A on Gym.Gym_Id = A.Acitivty_Gym_Id
+    //INNER JOIN Activity_Type T on A.Activity_Type = T.Activity_Type_Id
+    //WHERE Gym.Gym_Id = 5;
     public List<Gym> getByActivity(int id){
-        Query query = em.createQuery("SELECT g FROM Gym g ")
+        Query query = em.createQuery("SELECT g.gymName, g.gymRating, g.gymAdress, g.gymZipCode, g.city FROM Gym g JOIN Activity a ON ")
     }
 }
