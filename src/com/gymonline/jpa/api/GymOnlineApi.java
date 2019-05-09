@@ -69,8 +69,6 @@ public class GymOnlineApi extends Application {
     public List<City> getCities(){
         return cr.getAll();
     }
-<<<<<<< HEAD
-=======
 
     @GET
     @Path("/instructors")
@@ -79,6 +77,4 @@ public class GymOnlineApi extends Application {
         return ir.getAll();
     }
 
-
->>>>>>> 348fe531a857abc2b9020e109a66a53db95c3713
 }
