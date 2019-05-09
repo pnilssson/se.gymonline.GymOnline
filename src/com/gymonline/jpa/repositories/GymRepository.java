@@ -11,14 +11,18 @@ public class GymRepository {
     @PersistenceContext(unitName = "GymOnlinePU")
     private EntityManager em;
 
+    public List<Gym> getAll(){
+        Query query = em.createQuery("SELECT g FROM Gym g");
+        return query.getResultList();
+    }
+
     public List<Gym> getById(int id){
-        Query query = em.createQuery("SELECT c FROM Gym c WHERE c.gymId = :gymId")
+        Query query = em.createQuery("SELECT g FROM Gym g WHERE g.gymId = :gymId")
                 .setParameter("gymId", id);
         return query.getResultList();
     }
 
-    public List<Gym> getAll(){
-        Query query = em.createQuery("SELECT c FROM Gym c");
-        return query.getResultList();
+    public List<Gym> getByActivity(int id){
+        Query query = em.createQuery("SELECT g FROM Gym g ")
     }
 }
