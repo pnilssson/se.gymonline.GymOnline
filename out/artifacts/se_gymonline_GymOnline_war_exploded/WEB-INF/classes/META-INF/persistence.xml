@@ -6,6 +6,7 @@
         <jta-data-source>java:/MySqlGymOnlineDS</jta-data-source>
         <class>com.gymonline.jpa.models.Gym</class>
         <class>com.gymonline.jpa.models.City</class>
+        <class>com.gymonline.jpa.models.Instrutor</class>
         <class>com.gymonline.jpa.models.Customer</class>
 
         <properties>
