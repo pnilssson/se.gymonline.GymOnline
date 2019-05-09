@@ -78,6 +78,21 @@ public class GymOnlineApi extends Application {
     public List<Instructor> getInstructors(){
         return ir.getAll();
     }
+    @GET
+    @Path("/instructors/{id}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<Instructor> getInstructorById(@PathParam("id") int id){
+        return ir.getById(id);
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/instructors")
+    public Response postInstructors(Instructor i){
+        i = ir.create(i);
+        return Response.ok(i.getInstructorSocialSecurityNumber() + " created").build();
+    }
 
 
 }
