@@ -1,8 +1,10 @@
 package com.gymonline.jpa.api;
 
 import com.gymonline.jpa.models.City;
+import com.gymonline.jpa.models.Customer;
 import com.gymonline.jpa.models.Gym;
 import com.gymonline.jpa.repositories.CityRepository;
+import com.gymonline.jpa.repositories.CustomerRepository;
 import com.gymonline.jpa.repositories.GymRepository;
 
 import javax.inject.Inject;
@@ -19,6 +21,15 @@ public class GymOnlineApi extends Application {
     private GymRepository gr;
     @Inject
     private CityRepository cr;
+    @Inject
+    private CustomerRepository cur;
+
+    @GET
+    @Path("/customers")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<Customer> getCustomers(){
+        return cur.getAll();
+    }
 
     @GET
     @Path("/gyms")
