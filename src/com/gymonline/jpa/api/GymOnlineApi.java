@@ -69,6 +69,12 @@ public class GymOnlineApi extends Application {
     public List<Instructor> getInstructors(){
         return ir.getAll();
     }
+    @GET
+    @Path("/instructors/{id}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<Instructor> getInstructorById(@PathParam("id") int id){
+        return ir.getById(id);
+    }
 
 
 }
