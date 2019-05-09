@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @ApplicationPath("/gymonline")
@@ -25,7 +26,7 @@ public class GymOnlineApi extends Application {
     private CityRepository cr;
     @Inject
     private InstructorRepository ir;
-
+    @Inject
     private CustomerRepository cur;
 
     @GET
@@ -42,6 +43,14 @@ public class GymOnlineApi extends Application {
         return cur.getById(id);
     }
 
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/customers")
+    public Response postPerson(Customer c){
+        c = cur.create(c);
+        return Response.ok(c.getCustomerFirstName() + " created").build();
+    }
     @GET
     @Path("/gyms")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})

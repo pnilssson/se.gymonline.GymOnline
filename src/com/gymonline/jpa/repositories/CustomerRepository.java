@@ -1,7 +1,7 @@
 package com.gymonline.jpa.repositories;
 
 import com.gymonline.jpa.models.Customer;
-import com.gymonline.jpa.models.Gym;
+
 
 
 import javax.persistence.EntityManager;
@@ -23,5 +23,10 @@ public class CustomerRepository {
         Query query = em.createQuery("SELECT c FROM Customer c WHERE c.customerSocialSecurityNumber = :customerId")
                 .setParameter("customerId", id);
         return query.getResultList();
+    }
+
+    public Customer create (Customer c){
+        em.persist(c);
+        return c;
     }
 }
