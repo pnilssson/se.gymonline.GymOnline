@@ -93,3 +93,8 @@ local.properties
 
 # Testing environment specific
 derby.log
+out/artifacts/se_gymonline_GymOnline_war_exploded/WEB-INF/web.xml
+out/artifacts/se_gymonline_GymOnline_war_exploded/WEB-INF/classes/META-INF/beans.xml
+out/artifacts/se_gymonline_GymOnline_war_exploded/WEB-INF/beans.xml
+out/artifacts/se_gymonline_GymOnline_war_exploded/index.jsp
+out/artifacts/se_gymonline_GymOnline_war_exploded/WEB-INF/classes/META-INF/persistence.xml
