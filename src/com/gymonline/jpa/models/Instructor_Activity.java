@@ -20,9 +20,14 @@ public class Instructor_Activity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer iASocialSecurityNumber;
 
-
+    @Id
     @Column(name = "IA_Activity_Id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer iAActivityId;
+
+    /*@Column(name = "IA_Activity_Id")
+    private Integer iAActivityId;
+    */
 
     public Integer getiASocialSecurityNumber() {
         return iASocialSecurityNumber;
