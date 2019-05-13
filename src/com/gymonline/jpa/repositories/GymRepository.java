@@ -29,7 +29,7 @@ public class GymRepository {
      */
     public List<Gym> getByActivity(int id){
         Query query = em.createQuery("SELECT g.gymName, g.gymRating, g.gymAdress, g.gymZipCode, g.city, a.activityRating, a.activityPrice, a.activityPopularity, a.activityDate, a.activityDuration, a.activityType" +
-                " FROM Gym g JOIN Activity a JOIN  Activity_Type at WHERE g.gymId = :gymId")
+                " FROM Gym g JOIN Activity a JOIN Activity_Type at WHERE g.gymId = :gymId")
                 .setParameter("gymId", id);
         return query.getResultList();
     }
