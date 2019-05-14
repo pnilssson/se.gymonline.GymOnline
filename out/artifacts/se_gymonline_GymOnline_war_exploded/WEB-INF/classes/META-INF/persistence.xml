@@ -6,6 +6,10 @@
         <jta-data-source>java:/MySqlGymOnlineDS</jta-data-source>
         <class>com.gymonline.jpa.models.Gym</class>
         <class>com.gymonline.jpa.models.City</class>
+        <class>com.gymonline.jpa.models.Activity</class>
+        <class>com.gymonline.jpa.models.Activity_Type</class>
+        <class>com.gymonline.jpa.models.Instructor_Activity</class>
+        <class>com.gymonline.jpa.models.Customer_Activity</class>
 
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
