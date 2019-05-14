@@ -43,7 +43,7 @@ public class Activity {
 
     @ManyToOne
     @JoinColumn(name = "Acitivty_Gym_Id")
-    private Activity_Type activityGym;
+    private Gym activityGym;
 
     public Integer getActivityId() {
         return activityId;
@@ -93,19 +93,19 @@ public class Activity {
         this.activityDuration = activityDuration;
     }
 
-    public Activity_Type getActivityType() {
+    public com.gymonline.jpa.models.Activity_Type getActivityType() {
         return activityType;
     }
 
-    public void setActivityType(Activity_Type activityType) {
+    public void setActivityType(com.gymonline.jpa.models.Activity_Type activityType) {
         this.activityType = activityType;
     }
 
-    public Activity_Type getActivityGym() {
+    public com.gymonline.jpa.models.Gym getActivityGym() {
         return activityGym;
     }
 
-    public void setActivityGym(Activity_Type activityGym) {
+    public void setActivityGym(com.gymonline.jpa.models.Gym activityGym) {
         this.activityGym = activityGym;
     }
 }
