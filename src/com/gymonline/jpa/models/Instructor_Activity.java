@@ -3,6 +3,7 @@ package com.gymonline.jpa.models;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.gymonline.jpa.CombinedKeys.InstructorActivityKeys;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -14,16 +15,13 @@ import java.io.Serializable;
 @XmlType(name="Instructor_Activity", propOrder = {"iASocialSecurityNumber", "iAActivityId"})
 @JsonPropertyOrder({"iASocialSecurityNumber", "iAActivityId"})
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "iASocialSecurityNumber")
-public class Instructor_Activity implements Serializable {
+@IdClass(InstructorActivityKeys.class)
+public class Instructor_Activity {
 
     @Id
-    @Column(name = "IA_Social_Security_Number")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer iASocialSecurityNumber;
 
     @Id
-    @Column(name = "IA_Activity_Id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer iAActivityId;
 
     /*@Column(name = "IA_Activity_Id")
