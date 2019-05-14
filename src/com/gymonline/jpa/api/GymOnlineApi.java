@@ -51,6 +51,7 @@ public class GymOnlineApi extends Application {
         c = cur.create(c);
         return Response.ok(c.getCustomerFirstName() + " created").build();
     }
+
     @GET
     @Path("/gyms")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
@@ -69,8 +70,16 @@ public class GymOnlineApi extends Application {
     @Path("/gyms/{id}/activities")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Gym> getActivityByGym(@PathParam("id") int id){
-        return gr.getByActivity(id);
+        return gr.getActivities(id);
     }
+    /*
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/gyms")
+    public List<Gym> postGyms(Gym g){
+        return gr.create(g);
+    }*/
 
     @GET
     @Path("/cities")
@@ -85,6 +94,7 @@ public class GymOnlineApi extends Application {
     public List<Instructor> getInstructors(){
         return ir.getAll();
     }
+
     @GET
     @Path("/instructors/{id}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
@@ -100,5 +110,4 @@ public class GymOnlineApi extends Application {
         i = ir.create(i);
         return Response.ok(i.getInstructorSocialSecurityNumber() + " created").build();
     }
-
 }

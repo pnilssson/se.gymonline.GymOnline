@@ -7,13 +7,14 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
 
 @Entity
 @XmlRootElement
 @XmlType(name="Instructor_Activity", propOrder = {"cASocialSecurityNumber", "cAActivityId","cARating","cAFeedback"})
 @JsonPropertyOrder({"cASocialSecurityNumber", "cAActivityId","cARating","cAFeedback"})
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "iASocialSecurityNumber")
-public class Customer_Activity {
+public class Customer_Activity implements Serializable {
 
     @Id
     @Column(name = "CA_Social_Security_Number")
