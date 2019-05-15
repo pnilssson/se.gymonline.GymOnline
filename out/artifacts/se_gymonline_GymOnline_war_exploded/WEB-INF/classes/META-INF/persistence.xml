@@ -10,6 +10,7 @@
         <class>com.gymonline.jpa.models.Activity_Type</class>
         <class>com.gymonline.jpa.models.Instructor_Activity</class>
         <class>com.gymonline.jpa.models.Customer_Activity</class>
+        <class>com.gymonline.jpa.models.Customer</class>
 
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>

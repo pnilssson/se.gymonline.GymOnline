@@ -45,11 +45,11 @@ public class GymOnlineApi extends Application {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/customers")
-    public Response postPerson(Customer c){
+    public Customer postPerson(Customer c) {
         c = cur.create(c);
-        return Response.ok(c.getCustomerFirstName() + " created").build();
+        return c;
     }
 
     @GET

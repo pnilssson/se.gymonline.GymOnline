@@ -18,7 +18,6 @@ public class Customer {
 
     @Id
     @Column(name = "Customer_Social_Security_Number")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer customerSocialSecurityNumber;
 
     @Column(name = "Customer_First_Name")
