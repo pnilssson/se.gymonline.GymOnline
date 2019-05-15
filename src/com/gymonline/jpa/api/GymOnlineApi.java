@@ -72,14 +72,21 @@ public class GymOnlineApi extends Application {
     public List<Gym> getActivityByGym(@PathParam("id") int id){
         return gr.getActivities(id);
     }
-    /*
+
+    @GET
+    @Path("/gyms/{id}/activities/{activityId}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<Gym> getSpecificGymActivities(@PathParam("id") int id, @PathParam("activityId") int activityId){
+        return gr.getSpecificActivities(id, activityId);
+    }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/gyms")
-    public List<Gym> postGyms(Gym g){
+    public Response postGyms(Gym g){
         return gr.create(g);
-    }*/
+    }
 
     @GET
     @Path("/cities")

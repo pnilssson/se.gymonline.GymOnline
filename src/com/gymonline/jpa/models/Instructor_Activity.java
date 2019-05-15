@@ -3,30 +3,36 @@ package com.gymonline.jpa.models;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.gymonline.jpa.CombinedKeys.InstructorActivityKeys;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import java.io.Serializable;
 
 @Entity
 @XmlRootElement
-@XmlType(name="Instructor_Activity", propOrder = {"iASocialSecurityNumber", "iAActivityId"})
-@JsonPropertyOrder({"iASocialSecurityNumber", "iAActivityId"})
+@XmlType(name="Instructor_Activity", propOrder = {"iAId", "iASocialSecurityNumber", "iAActivityId"})
+@JsonPropertyOrder({"iAId", "iASocialSecurityNumber", "iAActivityId"})
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "iASocialSecurityNumber")
-@IdClass(InstructorActivityKeys.class)
 public class Instructor_Activity {
 
     @Id
+    @Column(name = "IA_Id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer iAId;
+
+    @Column(name = "IA_Social_Security_Number")
     private Integer iASocialSecurityNumber;
 
-    @Id
+    @Column(name = "IA_Activity_Id")
     private Integer iAActivityId;
 
-    /*@Column(name = "IA_Activity_Id")
-    private Integer iAActivityId;
-    */
+    public Integer getiAId() {
+        return iAId;
+    }
+
+    public void setiAId(Integer iAId) {
+        this.iAId = iAId;
+    }
 
     public Integer getiASocialSecurityNumber() {
         return iASocialSecurityNumber;
