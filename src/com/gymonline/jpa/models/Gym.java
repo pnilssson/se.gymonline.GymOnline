@@ -33,9 +33,6 @@ public class Gym {
     @Column(name = "Gym_Zip_Code")
     private String gymZipCode;
 
-    @Column(name = "Gym_City")
-    private Integer gymCity;
-
     @ManyToOne
     @JoinColumn(name = "Gym_City")
     private City city;
@@ -78,14 +75,6 @@ public class Gym {
 
     public void setGymZipCode(String gymZipCode) {
         this.gymZipCode = gymZipCode;
-    }
-
-    public Integer getGymCity() {
-        return gymCity;
-    }
-
-    public void setGymCity(Integer gymCity) {
-        this.gymCity = gymCity;
     }
 
     public City getCity() {
