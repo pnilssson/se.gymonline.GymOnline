@@ -17,12 +17,10 @@ import java.util.List;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "instructorSocialSecurityNumber")
 public class Instructor {
 
-
     @Id
     @Column(name = "Instructor_Social_Security_Number")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer instructorSocialSecurityNumber;
-
 
     @Column(name = "Instructor_First_Name")
     private String instructorFirstName;

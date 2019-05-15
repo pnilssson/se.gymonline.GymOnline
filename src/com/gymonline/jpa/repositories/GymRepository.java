@@ -5,6 +5,7 @@ import com.gymonline.jpa.models.Gym;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 public class GymRepository {
@@ -23,14 +24,21 @@ public class GymRepository {
     }
 
     public List<Gym> getActivities(int id){
-        Query query = em.createQuery("SELECT g.gymName, g.gymRating, g.gymAdress, g.gymZipCode, g.city, a.activityRating, a.activityPrice, a.activityPopularity, a.activityDate, a.activityDuration, a.activityType" +
-                " FROM Gym g JOIN Activity a JOIN Activity_Type at WHERE g.gymId = :gymId")
+        Query query = em.createQuery("SELECT g.gymName, g.gymRating, g.gymAdress, g.gymZipCode, g.city, a.activityRating, a.activityPrice, a.activityPopularity, a.activityDate, a.activityDuration, at.activityTypeName FROM Activity a JOIN a.activityType at JOIN a.activityGym g WHERE g.gymId = :gymId")
                 .setParameter("gymId", id);
         return query.getResultList();
     }
-    /*
-    public List<Gym> create(Gym g){
-        return g;
+
+    public List<Gym> getSpecificActivities(int id, int activityId){
+        Query query = em.createQuery("")
+                .setParameter("gymId", id)
+                .setParameter("activityId", activityId);
+        return query.getResultList();
     }
-    */
+
+    public Response create(Gym g){
+        em.persist(g);
+        return Response.ok(g.getGymName() + " added.").build();
+    }
+
 }

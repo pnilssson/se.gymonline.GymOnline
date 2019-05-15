@@ -11,6 +11,12 @@ public class CityRepository {
     @PersistenceContext(unitName = "GymOnlinePU")
     private EntityManager em;
 
+    public List<City> getById(int id){
+        Query query = em.createQuery("SELECT c FROM City c WHERE c.cityId = :cityId")
+                .setParameter("cityId", id);
+        return query.getResultList();
+    }
+
     public List<City> getAll(){
         Query query = em.createQuery("SELECT c FROM City c");
         return query.getResultList();

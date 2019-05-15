@@ -3,25 +3,27 @@ package com.gymonline.jpa.models;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.gymonline.jpa.CombinedKeys.CustomerActivityKeys;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import java.io.Serializable;
 
 @Entity
 @XmlRootElement
-@XmlType(name="Instructor_Activity", propOrder = {"cASocialSecurityNumber", "cAActivityId","cARating","cAFeedback"})
-@JsonPropertyOrder({"cASocialSecurityNumber", "cAActivityId","cARating","cAFeedback"})
+@XmlType(name="Instructor_Activity", propOrder = {"cAId", "cASocialSecurityNumber", "cAActivityId","cARating","cAFeedback"})
+@JsonPropertyOrder({"cAId", "cASocialSecurityNumber", "cAActivityId","cARating","cAFeedback"})
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "iASocialSecurityNumber")
-@IdClass(CustomerActivityKeys.class)
 public class Customer_Activity {
 
     @Id
+    @Column(name = "CA_Id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer cAId;
+
+    @Column(name = "CA_Social_Security_Number")
     private Integer cASocialSecurityNumber;
 
-    @Id
+    @Column(name = "CA_Activity_Id")
     private Integer cAActivityId;
 
     @Column(name = "CA_Rating")
@@ -29,6 +31,14 @@ public class Customer_Activity {
 
     @Column(name = "CA_Feedback")
     private String cAFeedback;
+
+    public Integer getcAId() {
+        return cAId;
+    }
+
+    public void setcAId(Integer cAId) {
+        this.cAId = cAId;
+    }
 
     public Integer getcASocialSecurityNumber() {
         return cASocialSecurityNumber;
