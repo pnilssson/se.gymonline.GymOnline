@@ -10,8 +10,8 @@ import javax.xml.bind.annotation.XmlType;
 
 @Entity
 @XmlRootElement
-@XmlType(name="Instructor_Activity", propOrder = {"cAId", "cASocialSecurityNumber", "cAActivityId","cARating","cAFeedback"})
-@JsonPropertyOrder({"cAId", "cASocialSecurityNumber", "cAActivityId","cARating","cAFeedback"})
+@XmlType(name="Instructor_Activity", propOrder = {"cAId", "cACustomerId", "cAActivityId","cARating","cAFeedback"})
+@JsonPropertyOrder({"cAId", "cACustomerId", "cAActivityId", "cARating","cAFeedback"})
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "iASocialSecurityNumber")
 public class Customer_Activity {
 
@@ -20,8 +20,8 @@ public class Customer_Activity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer cAId;
 
-    @Column(name = "CA_Social_Security_Number")
-    private Integer cASocialSecurityNumber;
+    @Column(name = "CA_Customer_Id")
+    private Integer cACustomerId;
 
     @Column(name = "CA_Activity_Id")
     private Integer cAActivityId;
@@ -40,12 +40,12 @@ public class Customer_Activity {
         this.cAId = cAId;
     }
 
-    public Integer getcASocialSecurityNumber() {
-        return cASocialSecurityNumber;
+    public Integer getcACustomerId() {
+        return cACustomerId;
     }
 
-    public void setcASocialSecurityNumber(Integer cASocialSecurityNumber) {
-        this.cASocialSecurityNumber = cASocialSecurityNumber;
+    public void setcACustomerId(Integer cACustomerId) {
+        this.cACustomerId = cACustomerId;
     }
 
     public Integer getcAActivityId() {

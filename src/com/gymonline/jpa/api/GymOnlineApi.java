@@ -1,8 +1,6 @@
 package com.gymonline.jpa.api;
 
-
 import com.gymonline.jpa.models.*;
-
 import com.gymonline.jpa.repositories.*;
 import com.gymonline.jpa.models.City;
 import com.gymonline.jpa.models.Customer;
@@ -12,7 +10,6 @@ import com.gymonline.jpa.repositories.CityRepository;
 import com.gymonline.jpa.repositories.CustomerRepository;
 import com.gymonline.jpa.repositories.GymRepository;
 import com.gymonline.jpa.repositories.InstructorRepository;
-
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
