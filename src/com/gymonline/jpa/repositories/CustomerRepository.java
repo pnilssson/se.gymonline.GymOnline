@@ -21,12 +21,14 @@ public class CustomerRepository {
 
     public List<Customer> getById(int id){
         Query query = em.createQuery("SELECT c FROM Customer c WHERE c.customerId = :customerId")
+
                 .setParameter("customerId", id);
         return query.getResultList();
     }
 
     public List<Customer> getActivities(int id){
-        Query query = em.createQuery("SELECT c.customerFirstName, at.activityTypeName, a.activityDate FROM Customer c join Customer_Activity ca on c.id = ca.cACustomerId join Activity a on ca.cAActivityId = a.activityId join Activity_Type at on a.activityType.id = at.id WHERE c.id = :customerId")
+
+        Query query = em.createQuery("SELECT c.customerFirstName, at.activityTypeName, a.activityDate FROM Customer c join Customer_Activity ca on c.customerId = ca.cACustomerId join Activity a on ca.cAActivityId = a.activityId join Activity_Type at on a.activityType.id = at.id WHERE c.customerSocialSecurityNumber = :customerId")
                 .setParameter("customerId", id);
         return query.getResultList();
     }

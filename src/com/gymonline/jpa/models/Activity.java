@@ -13,9 +13,9 @@ import java.util.Date;
 @Entity
 @Table(name = "Activity")
 @XmlRootElement
-@XmlType(name="Activity", propOrder = {"activityId", "activityRating", "activityPrice", "activityPrice", "activityPopularity", "activityDate", "activityDuration", "activityType", "activityGym"})
+@XmlType(name="Activity", propOrder = {"activityId", "activityRating", "activityPrice", "activityPopularity", "activityDate", "activityDuration", "activityType", "activityGym"})
 @JsonPropertyOrder({"activityId", "activityRating", "activityPrice", "activityPrice", "activityPopularity", "activityDate", "activityDuration", "activityType", "activityGym"})
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "gymId")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "activityId")
 public class Activity {
 
     @Id

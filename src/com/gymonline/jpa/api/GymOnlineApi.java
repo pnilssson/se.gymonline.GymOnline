@@ -1,5 +1,7 @@
 package com.gymonline.jpa.api;
 
+import com.gymonline.jpa.models.*;
+import com.gymonline.jpa.repositories.*;
 import com.gymonline.jpa.models.City;
 import com.gymonline.jpa.models.Customer;
 import com.gymonline.jpa.models.Gym;
@@ -28,6 +30,8 @@ public class GymOnlineApi extends Application {
     private InstructorRepository ir;
     @Inject
     private CustomerRepository cur;
+    @Inject
+    private ActivityRepository ar;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -167,5 +171,35 @@ public class GymOnlineApi extends Application {
     @Path("/instructors/{id}")
     public Response deleteInstructorById(@PathParam("id") int id){
         return ir.delete(id);
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/activities")
+    public Response postActivity(Activity a){
+        return ar.post(a);
+    }
+
+    @GET
+    @Path("/activities")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Activity> getActivities(){
+        return ar.getAll();
+    }
+
+    @GET
+    @Path("/activities/{id}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<Activity> getActivitiesById(@PathParam("id") int id){
+        return ar.getById(id);
+    }
+
+    @DELETE
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/activities/{id}")
+    public Response delete(@PathParam("id") int id){
+        return ar.delete(id);
     }
 }
