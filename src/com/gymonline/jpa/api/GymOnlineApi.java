@@ -113,7 +113,7 @@ public class GymOnlineApi extends Application {
     @GET
     @Path("/cities/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<City> getCitiesById(@PathParam("id") int id){
+    public List<City> getCityById(@PathParam("id") int id){
         return cr.getById(id);
     }
 
