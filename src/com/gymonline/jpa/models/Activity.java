@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -32,7 +33,7 @@ public class Activity {
     private Integer activityPopularity;
 
     @Column(name = "Activity_Date")
-    private Date activityDate;
+    private String activityDate;
 
     @Column(name = "Activity_Duration")
     private Integer activityDuration;
@@ -77,11 +78,11 @@ public class Activity {
         this.activityPopularity = activityPopularity;
     }
 
-    public Date getActivityDate() {
+    public String getActivityDate() {
         return activityDate;
     }
 
-    public void setActivityDate(Date activityDate) {
+    public void setActivityDate(String activityDate) {
         this.activityDate = activityDate;
     }
 
