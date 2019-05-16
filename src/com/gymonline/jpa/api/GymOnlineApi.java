@@ -15,7 +15,6 @@ import com.gymonline.jpa.repositories.InstructorRepository;
 
 
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.MediaType;
@@ -51,6 +50,13 @@ public class GymOnlineApi extends Application {
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Customer> getCustomers(){
         return cur.getAll();
+    }
+
+    @GET
+    @Path("/customers/{id}/activities")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<Customer> getCustomersActivities(@PathParam("id") int id){
+        return cur.getActivities(id);
     }
 
     @GET
@@ -104,6 +110,14 @@ public class GymOnlineApi extends Application {
         return gr.delete(id);
     }
 
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/gyms")
+    public Response postCity(City c){
+        return cr.post(c);
+    }
+
     @GET
     @Path("/cities")
     @Produces(MediaType.APPLICATION_JSON)
@@ -114,7 +128,7 @@ public class GymOnlineApi extends Application {
     @GET
     @Path("/cities/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<City> getCitiesById(@PathParam("id") int id){
+    public List<City> getCityById(@PathParam("id") int id){
         return cr.getById(id);
     }
 
@@ -123,8 +137,7 @@ public class GymOnlineApi extends Application {
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/instructors")
     public Response postInstructor(Instructor i){
-        i = ir.create(i);
-        return Response.ok(i.getInstructorId() + " created").build();
+        return ir.create(i);
     }
 
     @GET
@@ -139,6 +152,20 @@ public class GymOnlineApi extends Application {
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Instructor> getInstructorById(@PathParam("id") int id){
         return ir.getById(id);
+    }
+
+    @GET
+    @Path("/instructors/{id}/activities")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<Instructor> getActivityByInstructor(@PathParam("id") int id){
+        return ir.getActivities(id);
+    }
+
+    @GET
+    @Path("/gyms/{id}/activities/{activityId}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<Instructor> getSpecificInstructorActivities(@PathParam("id") int id, @PathParam("activityId") int activityId){
+        return ir.getActivityById(id, activityId);
     }
 
     @DELETE

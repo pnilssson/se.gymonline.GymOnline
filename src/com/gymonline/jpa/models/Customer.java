@@ -11,14 +11,17 @@ import javax.xml.bind.annotation.XmlType;
 @Entity
 @Table(name = "Customer")
 @XmlRootElement
-@XmlType(name="Customer", propOrder = {"customerSocialSecurityNumber", "customerFirstName","customerLastName","customerMobileNumber","customerEmailAddress"})
-@JsonPropertyOrder({"customerSocialSecurityNumber", "customerFirstName","customerLastName","customerMobileNumber","customerEmailAddress"})
+@XmlType(name="Customer", propOrder = {"customerId", "customerDOB", "customerFirstName","customerLastName","customerMobileNumber","customerEmailAddress"})
+@JsonPropertyOrder({"customerId", "customerDOB", "customerFirstName","customerLastName","customerMobileNumber","customerEmailAddress"})
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "customerSocialSecurityNumber")
 public class Customer {
 
     @Id
-    @Column(name = "Customer_Social_Security_Number")
-    private Integer customerSocialSecurityNumber;
+    @Column(name = "Customer_Id")
+    private Integer customerId;
+
+    @Column(name = "Customer_DOB")
+    private Integer customerDOB;
 
     @Column(name = "Customer_First_Name")
     private String customerFirstName;
@@ -32,12 +35,20 @@ public class Customer {
     @Column(name = "Customer_Email_Address")
     private String customerEmailAddress;
 
-    public Integer getCustomerSocialSecurityNumber() {
-        return customerSocialSecurityNumber;
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomerSocialSecurityNumber(Integer customerSocialSecurityNumber) {
-        this.customerSocialSecurityNumber = customerSocialSecurityNumber;
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
+
+    public Integer getCustomerDOB() {
+        return customerDOB;
+    }
+
+    public void setCustomerDOB(Integer customerDOB) {
+        this.customerDOB = customerDOB;
     }
 
     public String getCustomerFirstName() {
