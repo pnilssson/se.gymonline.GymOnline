@@ -7,8 +7,6 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import java.sql.Timestamp;
-import java.util.Date;
 
 @Entity
 @Table(name = "Activity")

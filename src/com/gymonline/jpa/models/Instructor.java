@@ -14,11 +14,11 @@ import java.util.List;
 @XmlRootElement
 @XmlType(name="Instructor", propOrder = {"instructorId", "instructorDOB", "instructorFirstName", "instructorLastName", "instructorMobileNumber", "instructorEmailAddress", "instructorSalary"})
 @JsonPropertyOrder({"instructorId", "instructorDOB", "instructorFirstName", "instructorLastName", "instructorMobileNumber", "instructorEmailAddress", "instructorSalary"})
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "instructorSocialSecurityNumber")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "instructorId")
 public class Instructor {
 
     @Id
-    @Column(name = "Instructor_id")
+    @Column(name = "Instructor_Id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer instructorId;
 
