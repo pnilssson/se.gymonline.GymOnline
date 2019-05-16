@@ -9,13 +9,12 @@ import javax.transaction.Transactional;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-@Transactional
 public class GymRepository {
     @PersistenceContext(unitName = "GymOnlinePU")
     private EntityManager em;
 
     public List<Gym> getAll(){
-        Query query = em.createQuery("SELECT g, c.cityName FROM Gym g JOIN g.city c");
+        Query query = em.createQuery("SELECT g FROM Gym g");
         return query.getResultList();
     }
 
@@ -26,7 +25,7 @@ public class GymRepository {
     }
 
     public List<Gym> getActivities(int id){
-        Query query = em.createQuery("SELECT g.gymName, g.gymRating, g.gymAdress, g.gymZipCode, c.cityName, a.activityId, a.activityRating, a.activityPrice, a.activityPopularity, a.activityDate, a.activityDuration, at.activityTypeName FROM Activity a JOIN a.activityType at JOIN a.activityGym g JOIN g.city c WHERE g.gymId = :gymId")
+        Query query = em.createQuery("SELECT g.gymName, g.gymRating, g.gymAdress, g.gymZipCode, g.city, a.activityId, a.activityRating, a.activityPrice, a.activityPopularity, a.activityDate, a.activityDuration, at.activityTypeName FROM Activity a JOIN a.activityType at JOIN a.activityGym g JOIN g.city c WHERE g.gymId = :gymId")
                 .setParameter("gymId", id);
         return query.getResultList();
     }
@@ -38,9 +37,16 @@ public class GymRepository {
         return query.getResultList();
     }
 
-    public Response post(Gym g){
-        em.persist(g);
-        return Response.ok(g.getGymName() + " added.").build();
+    @Transactional
+    public Response post(Gym gym){
+        em.persist(gym);
+        return Response.ok(gym.getGymName() + " added.").build();
+    }
+
+    public Response delete(int id){
+        Gym gym = em.find(Gym.class, id);
+        em.remove(gym);
+        return Response.ok(gym.getGymName() + " deleted.").build();
     }
 
 }

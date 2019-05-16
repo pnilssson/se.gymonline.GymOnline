@@ -33,9 +33,8 @@ public class Gym {
     @Column(name = "Gym_Zip_Code")
     private String gymZipCode;
 
-    @ManyToOne
-    @JoinColumn(name = "Gym_City")
-    private City city;
+    @Column(name = "Gym_City")
+    private Integer city;
 
     public Integer getGymId() {
         return gymId;
@@ -77,11 +76,11 @@ public class Gym {
         this.gymZipCode = gymZipCode;
     }
 
-    public City getCity() {
+    public Integer getCity() {
         return city;
     }
 
-    public void setCity(City city) {
+    public void setCity(Integer city) {
         this.city = city;
     }
 }
