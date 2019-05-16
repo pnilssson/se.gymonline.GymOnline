@@ -31,14 +31,14 @@ public class GymRepository {
         return query.getResultList();
     }
 
-    public List<Gym> getActiviyById(int id, int activityId){
+    public List<Gym> getActivityById(int id, int activityId){
         Query query = em.createQuery("SELECT g.gymName, g.gymRating, g.gymAdress, g.gymZipCode, g.city, a.activityId, a.activityRating, a.activityPrice, a.activityPopularity, a.activityDate, a.activityDuration, at.activityTypeName FROM Activity a JOIN a.activityType at JOIN a.activityGym g WHERE g.gymId = :gymId AND a.activityId = :activityId")
                 .setParameter("gymId", id)
                 .setParameter("activityId", activityId);
         return query.getResultList();
     }
 
-    public Response create(Gym g){
+    public Response post(Gym g){
         em.persist(g);
         return Response.ok(g.getGymName() + " added.").build();
     }

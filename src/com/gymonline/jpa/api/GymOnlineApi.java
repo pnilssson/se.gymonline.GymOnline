@@ -77,7 +77,7 @@ public class GymOnlineApi extends Application {
     @Path("/gyms/{id}/activities/{activityId}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Gym> getSpecificGymActivities(@PathParam("id") int id, @PathParam("activityId") int activityId){
-        return gr.getActiviyById(id, activityId);
+        return gr.getActivityById(id, activityId);
     }
 
     @POST
@@ -85,7 +85,7 @@ public class GymOnlineApi extends Application {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/gyms")
     public Response postGym(Gym g){
-        return gr.create(g);
+        return gr.post(g);
     }
 
     @GET

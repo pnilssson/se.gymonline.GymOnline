@@ -23,9 +23,6 @@ public class Customer_Activity {
     @Column(name = "CA_Social_Security_Number")
     private Integer cASocialSecurityNumber;
 
-    @Column(name = "CA_Activity_Id")
-    private Integer cAActivityId;
-
     @Column(name = "CA_Rating")
     private Integer cARating;
 
@@ -46,14 +43,6 @@ public class Customer_Activity {
 
     public void setcASocialSecurityNumber(Integer cASocialSecurityNumber) {
         this.cASocialSecurityNumber = cASocialSecurityNumber;
-    }
-
-    public Integer getcAActivityId() {
-        return cAActivityId;
-    }
-
-    public void setcAActivityId(Integer cAActivityId) {
-        this.cAActivityId = cAActivityId;
     }
 
     public Integer getcARating() {
