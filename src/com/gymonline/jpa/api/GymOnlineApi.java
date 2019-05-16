@@ -10,6 +10,7 @@ import com.gymonline.jpa.repositories.GymRepository;
 import com.gymonline.jpa.repositories.InstructorRepository;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.MediaType;
@@ -28,6 +29,15 @@ public class GymOnlineApi extends Application {
     private InstructorRepository ir;
     @Inject
     private CustomerRepository cur;
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/customers")
+    public Customer postCustomer(Customer c) {
+        c = cur.create(c);
+        return c;
+    }
 
     @GET
     @Path("/customers")
@@ -53,10 +63,9 @@ public class GymOnlineApi extends Application {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/customers")
-    public Customer postPerson(Customer c) {
-        c = cur.create(c);
-        return c;
+    @Path("/gyms")
+    public Response postGym(Gym g){
+        return gr.post(g);
     }
 
     @GET
@@ -87,12 +96,12 @@ public class GymOnlineApi extends Application {
         return gr.getActivityById(id, activityId);
     }
 
-    @POST
+    @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/gyms")
-    public Response postGym(Gym g){
-        return gr.post(g);
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/gyms/{id}")
+    public Response deleteGymById(@PathParam("id") int id){
+        return gr.delete(id);
     }
 
     @GET
@@ -109,6 +118,15 @@ public class GymOnlineApi extends Application {
         return cr.getById(id);
     }
 
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/instructors")
+    public Response postInstructor(Instructor i){
+        i = ir.create(i);
+        return Response.ok(i.getInstructorSocialSecurityNumber() + " created").build();
+    }
+
     @GET
     @Path("/instructors")
     @Produces(MediaType.APPLICATION_JSON)
@@ -123,12 +141,11 @@ public class GymOnlineApi extends Application {
         return ir.getById(id);
     }
 
-    @POST
+    @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    @Path("/instructors")
-    public Response postInstructors(Instructor i){
-        i = ir.create(i);
-        return Response.ok(i.getInstructorSocialSecurityNumber() + " created").build();
+    @Path("/instructors/{id}")
+    public Response deleteInstructorById(@PathParam("id") int id){
+        return ir.delete(id);
     }
 }
