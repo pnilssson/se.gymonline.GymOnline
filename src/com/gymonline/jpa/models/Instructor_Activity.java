@@ -10,8 +10,8 @@ import javax.xml.bind.annotation.XmlType;
 
 @Entity
 @XmlRootElement
-@XmlType(name="Instructor_Activity", propOrder = {"iAId", "iASocialSecurityNumber", "iAActivityId"})
-@JsonPropertyOrder({"iAId", "iASocialSecurityNumber", "iAActivityId"})
+@XmlType(name="Instructor_Activity", propOrder = {"iAId", "iAInstructorId", "iAActivityId"})
+@JsonPropertyOrder({"iAId", "iAInstructorId", "iAActivityId"})
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "iASocialSecurityNumber")
 public class Instructor_Activity {
 
@@ -20,11 +20,19 @@ public class Instructor_Activity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer iAId;
 
-    @Column(name = "IA_Social_Security_Number")
-    private Integer iASocialSecurityNumber;
+    @Column(name = "IA_Instructor_Id")
+    private Integer iAInstructorId;
 
     @Column(name = "IA_Activity_Id")
     private Integer iAActivityId;
+
+    public Integer getiAInstructorId() {
+        return iAInstructorId;
+    }
+
+    public void setiAInstructorId(Integer iAInstructorId) {
+        this.iAInstructorId = iAInstructorId;
+    }
 
     public Integer getiAId() {
         return iAId;
@@ -32,14 +40,6 @@ public class Instructor_Activity {
 
     public void setiAId(Integer iAId) {
         this.iAId = iAId;
-    }
-
-    public Integer getiASocialSecurityNumber() {
-        return iASocialSecurityNumber;
-    }
-
-    public void setiASocialSecurityNumber(Integer iASocialSecurityNumber) {
-        this.iASocialSecurityNumber = iASocialSecurityNumber;
     }
 
     public Integer getiAActivityId() {
