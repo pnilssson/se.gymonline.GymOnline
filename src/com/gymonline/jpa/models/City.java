@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -40,4 +41,5 @@ public class City {
     public void setCityName(String cityName) {
         this.cityName = cityName;
     }
+
 }
