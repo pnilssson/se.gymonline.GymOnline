@@ -19,8 +19,6 @@ public class CustomerRepository {
 
 
 
-
-
     public List<Customer> getAll(){
         Query query = em.createQuery("SELECT c FROM Customer c");
         return query.getResultList();

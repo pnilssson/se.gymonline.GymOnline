@@ -1,11 +1,11 @@
 package com.gymonline.jpa.repositories;
 
-import com.gymonline.jpa.models.Gym;
 import com.gymonline.jpa.models.Instructor;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 public class InstructorRepository {
@@ -30,9 +30,15 @@ public class InstructorRepository {
         return query.getResultList();
     }
 
-    public Instructor create (Instructor i){
+    public Instructor create(Instructor i){
         em.persist(i);
         return i;
+    }
+
+    public Response delete(int id){
+        Instructor instructor = em.find(Instructor.class, id);
+        em.remove(instructor);
+        return Response.ok(instructor.getInstructorSocialSecurityNumber() + " " + instructor.getInstructorFirstName() + " deleted.").build();
     }
 }
 

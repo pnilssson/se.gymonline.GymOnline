@@ -10,6 +10,7 @@ import com.gymonline.jpa.repositories.GymRepository;
 import com.gymonline.jpa.repositories.InstructorRepository;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.MediaType;
@@ -47,7 +48,7 @@ public class GymOnlineApi extends Application {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/customers")
-    public Customer postPerson(Customer c) {
+    public Customer postCustomer(Customer c) {
         c = cur.create(c);
         return c;
     }
@@ -120,8 +121,17 @@ public class GymOnlineApi extends Application {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/instructors")
-    public Response postInstructors(Instructor i){
+    public Response postInstructor(Instructor i){
         i = ir.create(i);
         return Response.ok(i.getInstructorSocialSecurityNumber() + " created").build();
+    }
+
+    @DELETE
+    @Transactional
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/instructors/{id}")
+    public Response deleteInstructorById(@PathParam("id") int id){
+        return ir.delete(id);
     }
 }
