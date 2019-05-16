@@ -103,6 +103,14 @@ public class GymOnlineApi extends Application {
         return gr.delete(id);
     }
 
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/gyms")
+    public Response postCity(City c){
+        return cr.post(c);
+    }
+
     @GET
     @Path("/cities")
     @Produces(MediaType.APPLICATION_JSON)
