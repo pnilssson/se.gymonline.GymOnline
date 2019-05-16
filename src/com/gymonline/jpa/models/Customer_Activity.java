@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
 public class Customer_Activity {
 
     @Id
-    @Column(name = "CA_Id")
+    @Column(name = "CA_Activity_Id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer cAId;
 
