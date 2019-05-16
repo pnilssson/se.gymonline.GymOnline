@@ -10,7 +10,6 @@ import com.gymonline.jpa.repositories.GymRepository;
 import com.gymonline.jpa.repositories.InstructorRepository;
 
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.MediaType;
