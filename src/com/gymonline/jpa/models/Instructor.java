@@ -12,15 +12,18 @@ import java.util.List;
 
 @Entity
 @XmlRootElement
-@XmlType(name="Instructor", propOrder = {"instructorSocialSecurityNumber", "instructorFirstName", "instructorLastName", "instructorMobileNumber", "instructorEmailAddress", "instructorSalary"})
-@JsonPropertyOrder({"instructorSocialSecurityNumber", "instructorFirstName", "instructorLastName", "instructorMobileNumber", "instructorEmailAddress", "instructorSalary"})
+@XmlType(name="Instructor", propOrder = {"instructorId", "instructorDOB", "instructorFirstName", "instructorLastName", "instructorMobileNumber", "instructorEmailAddress", "instructorSalary"})
+@JsonPropertyOrder({"instructorId", "instructorDOB", "instructorFirstName", "instructorLastName", "instructorMobileNumber", "instructorEmailAddress", "instructorSalary"})
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "instructorSocialSecurityNumber")
 public class Instructor {
 
     @Id
-    @Column(name = "Instructor_Social_Security_Number")
+    @Column(name = "Instructor_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer instructorSocialSecurityNumber;
+    private Integer instructorId;
+
+    @Column(name = "Instructor_DOB")
+    private String instructorDOB;
 
     @Column(name = "Instructor_First_Name")
     private String instructorFirstName;
@@ -37,12 +40,20 @@ public class Instructor {
     @Column(name = "Instructor_Salary")
     private Integer instructorSalary;
 
-    public Integer getInstructorSocialSecurityNumber() {
-        return instructorSocialSecurityNumber;
+    public Integer getInstructorId() {
+        return instructorId;
     }
 
-    public void setInstructorSocialSecurityNumber(Integer instructorSocialSecurityNumber) {
-        this.instructorSocialSecurityNumber = instructorSocialSecurityNumber;
+    public void setInstructorId(Integer instructorId) {
+        this.instructorId = instructorId;
+    }
+
+    public String getInstructorDOB() {
+        return instructorDOB;
+    }
+
+    public void setInstructorDOB(String instructorDOB) {
+        this.instructorDOB = instructorDOB;
     }
 
     public String getInstructorFirstName() {
