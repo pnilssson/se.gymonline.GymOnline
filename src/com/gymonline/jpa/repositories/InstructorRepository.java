@@ -19,8 +19,8 @@ public class InstructorRepository {
     }
 
     public List<Instructor> getById(int id){
-        Query query = em.createQuery("SELECT i FROM Instructor i WHERE i.instructorId = :instructorSocialSecurityNumber")
-                .setParameter("instructorSocialSecurityNumber", id);
+        Query query = em.createQuery("SELECT i FROM Instructor i WHERE i.instructorId = :instructorId")
+                .setParameter("instructorId", id);
         return query.getResultList();
     }
 
