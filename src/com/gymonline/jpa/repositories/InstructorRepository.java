@@ -19,19 +19,19 @@ public class InstructorRepository {
     }
 
     public List<Instructor> getById(int id){
-        Query query = em.createQuery("SELECT i FROM Instructor i WHERE i.instructorSocialSecurityNumber = :instructorSocialSecurityNumber")
+        Query query = em.createQuery("SELECT i FROM Instructor i WHERE i.instructorId = :instructorSocialSecurityNumber")
                 .setParameter("instructorSocialSecurityNumber", id);
         return query.getResultList();
     }
 
     public List<Instructor> getActivities(int id){
-        Query query = em.createQuery("SELECT i.instructorSocialSecurityNumber, i.instructorFirstName, i.instructorLastName, i.instructorEmailAddress, i.instructorMobileNumber, i.instructorSalary, a.activityDate, a.activityDuration, a.activityPopularity, a.activityPrice, a.activityRating, at.activityTypeName FROM Instructor i JOIN Instructor_Activity ia ON i.instructorSocialSecurityNumber = ia.iASocialSecurityNumber JOIN Activity a ON ia.iAActivityId = a.activityId JOIN Activity_Type at ON a.activityType.id = at.id WHERE ia.iASocialSecurityNumber = :instructorId")
+        Query query = em.createQuery("SELECT i.instructorId, i.instructorDOB, i.instructorFirstName, i.instructorLastName, i.instructorEmailAddress, i.instructorMobileNumber, i.instructorSalary, a.activityDate, a.activityDuration, a.activityPopularity, a.activityPrice, a.activityRating, at.activityTypeName FROM Instructor i JOIN Instructor_Activity ia ON i.instructorId = ia.instructorId JOIN Activity a ON ia.iAActivityId = a.activityId JOIN Activity_Type at ON a.activityType.id = at.id WHERE ia.iASocialSecurityNumber = :instructorId")
                 .setParameter("instructorId", id);
         return query.getResultList();
     }
 
     public List<Instructor> getActivityById(int id, int activityId){
-        Query query = em.createQuery("SELECT i.instructorSocialSecurityNumber, i.instructorFirstName, i.instructorLastName, i.instructorEmailAddress, i.instructorMobileNumber, i.instructorSalary, a.activityDate, a.activityDuration, a.activityPopularity, a.activityPrice, a.activityRating, at.activityTypeName FROM Instructor i JOIN Instructor_Activity ia ON i.instructorSocialSecurityNumber = ia.iASocialSecurityNumber JOIN Activity a ON ia.iAActivityId = a.activityId JOIN Activity_Type at ON a.activityType.id = at.id WHERE ia.iASocialSecurityNumber = :instructorId AND a.activityId = :activityId")
+        Query query = em.createQuery("SELECT i.instructorId, i.instructorDOB, i.instructorFirstName, i.instructorLastName, i.instructorEmailAddress, i.instructorMobileNumber, i.instructorSalary, a.activityDate, a.activityDuration, a.activityPopularity, a.activityPrice, a.activityRating, at.activityTypeName FROM Instructor i JOIN Instructor_Activity ia ON i.instructorId = ia.instructorId JOIN Activity a ON ia.iAActivityId = a.activityId JOIN Activity_Type at ON a.activityType.id = at.id WHERE ia.iASocialSecurityNumber = :instructorId AND a.activityId = :activityId")
                 .setParameter("instructorId", id)
                 .setParameter("activityId", activityId);
         return query.getResultList();
@@ -39,13 +39,13 @@ public class InstructorRepository {
 
     public Response create(Instructor i){
         em.persist(i);
-        return Response.ok(i.getInstructorSocialSecurityNumber() + "" + i.getInstructorFirstName() + " created").build();
+        return Response.ok(i.getInstructorId() + "" + i.getInstructorFirstName() + " created").build();
     }
 
     public Response delete(int id){
         Instructor instructor = em.find(Instructor.class, id);
         em.remove(instructor);
-        return Response.ok(instructor.getInstructorSocialSecurityNumber() + " " + instructor.getInstructorFirstName() + " deleted.").build();
+        return Response.ok(instructor.getInstructorId() + " " + instructor.getInstructorFirstName() + " deleted.").build();
     }
 }
 
