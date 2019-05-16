@@ -8,6 +8,7 @@ import javax.persistence.Query;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
+
 public class GymRepository {
     @PersistenceContext(unitName = "GymOnlinePU")
     private EntityManager em;
@@ -24,13 +25,13 @@ public class GymRepository {
     }
 
     public List<Gym> getActivities(int id){
-        Query query = em.createQuery("SELECT g.gymName, g.gymRating, g.gymAdress, g.gymZipCode, g.city, a.activityRating, a.activityPrice, a.activityPopularity, a.activityDate, a.activityDuration, at.activityTypeName FROM Activity a JOIN a.activityType at JOIN a.activityGym g WHERE g.gymId = :gymId")
+        Query query = em.createQuery("SELECT g.gymName, g.gymRating, g.gymAdress, g.gymZipCode, c.cityName, a.activityId, a.activityRating, a.activityPrice, a.activityPopularity, a.activityDate, a.activityDuration, at.activityTypeName FROM Activity a JOIN a.activityType at JOIN a.activityGym g JOIN g.city c WHERE g.gymId = :gymId")
                 .setParameter("gymId", id);
         return query.getResultList();
     }
 
     public List<Gym> getSpecificActivities(int id, int activityId){
-        Query query = em.createQuery("")
+        Query query = em.createQuery("SELECT g.gymName, g.gymRating, g.gymAdress, g.gymZipCode, g.city, a.activityId, a.activityRating, a.activityPrice, a.activityPopularity, a.activityDate, a.activityDuration, at.activityTypeName FROM Activity a JOIN a.activityType at JOIN a.activityGym g WHERE g.gymId = :gymId AND a.activityId = :activityId")
                 .setParameter("gymId", id)
                 .setParameter("activityId", activityId);
         return query.getResultList();

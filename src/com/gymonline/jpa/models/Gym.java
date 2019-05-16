@@ -18,7 +18,7 @@ public class Gym {
 
     @Id
     @Column(name = "Gym_Id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer gymId;
 
     @Column(name = "Gym_Name")
