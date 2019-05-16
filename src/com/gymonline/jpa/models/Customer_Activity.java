@@ -11,9 +11,9 @@ import javax.xml.bind.annotation.XmlType;
 @Entity
 @XmlRootElement
 @XmlType(name="Instructor_Activity", propOrder = {"cAId", "cACustomerId", "cAActivityId","cARating","cAFeedback"})
-@JsonPropertyOrder({"cAId", "cASocialSecurityNumber", "cAActivityId","cARating","cAFeedback"})
 
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "iASocialSecurityNumber")
+@JsonPropertyOrder({"cAId", "cACustomerId", "cAActivityId", "cARating","cAFeedback"})
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "cAId")
 public class Customer_Activity {
 
     @Id
