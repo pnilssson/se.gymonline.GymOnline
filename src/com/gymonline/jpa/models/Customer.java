@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlType(name="Customer", propOrder = {"customerId", "customerDOB", "customerFirstName","customerLastName","customerMobileNumber","customerEmailAddress"})
 @JsonPropertyOrder({"customerId", "customerDOB", "customerFirstName","customerLastName","customerMobileNumber","customerEmailAddress"})
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "customerSocialSecurityNumber")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "customerId")
 public class Customer {
 
     @Id
