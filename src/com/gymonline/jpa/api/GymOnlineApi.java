@@ -130,8 +130,7 @@ public class GymOnlineApi extends Application {
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/instructors")
     public Response postInstructor(Instructor i){
-        i = ir.create(i);
-        return Response.ok(i.getInstructorSocialSecurityNumber() + " created").build();
+        return ir.create(i);
     }
 
     @GET
@@ -146,6 +145,20 @@ public class GymOnlineApi extends Application {
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Instructor> getInstructorById(@PathParam("id") int id){
         return ir.getById(id);
+    }
+
+    @GET
+    @Path("/instructors/{id}/activities")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<Instructor> getActivityByInstructor(@PathParam("id") int id){
+        return ir.getActivities(id);
+    }
+
+    @GET
+    @Path("/gyms/{id}/activities/{activityId}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<Instructor> getSpecificInstructorActivities(@PathParam("id") int id, @PathParam("activityId") int activityId){
+        return ir.getActivityById(id, activityId);
     }
 
     @DELETE

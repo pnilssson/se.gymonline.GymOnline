@@ -43,7 +43,7 @@ public class Activity {
     private Activity_Type activityType;
 
     @ManyToOne
-    @JoinColumn(name = "Acitivty_Gym_Id")
+    @JoinColumn(name = "Activity_Gym_Id")
     private Gym activityGym;
 
     public Integer getActivityId() {

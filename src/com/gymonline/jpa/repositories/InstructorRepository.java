@@ -25,14 +25,21 @@ public class InstructorRepository {
     }
 
     public List<Instructor> getActivities(int id){
-        Query query = em.createQuery("SELECT i.instructorSocialSecurityNumber, i.instructorFirstName, i.instructorLastName, i.instructorEmailAddress, i.instructorMobileNumber, i.instructorSalary, a.activityDate, a.activityDuration, a.activityPopularity, a.activityPrice, a.activityRating, at.activityTypeName FROM Instructor_Activity ia JOIN ia.id iaid JOIN iaid..instructorSocialSecurityNumber = :instructorId")
+        Query query = em.createQuery("SELECT i.instructorSocialSecurityNumber, i.instructorFirstName, i.instructorLastName, i.instructorEmailAddress, i.instructorMobileNumber, i.instructorSalary, a.activityDate, a.activityDuration, a.activityPopularity, a.activityPrice, a.activityRating, at.activityTypeName FROM Instructor i JOIN Instructor_Activity ia ON i.instructorSocialSecurityNumber = ia.iASocialSecurityNumber JOIN Activity a ON ia.iAActivityId = a.activityId JOIN Activity_Type at ON a.activityType.id = at.id WHERE ia.iASocialSecurityNumber = :instructorId")
                 .setParameter("instructorId", id);
         return query.getResultList();
     }
 
-    public Instructor create(Instructor i){
+    public List<Instructor> getActivityById(int id, int activityId){
+        Query query = em.createQuery("SELECT i.instructorSocialSecurityNumber, i.instructorFirstName, i.instructorLastName, i.instructorEmailAddress, i.instructorMobileNumber, i.instructorSalary, a.activityDate, a.activityDuration, a.activityPopularity, a.activityPrice, a.activityRating, at.activityTypeName FROM Instructor i JOIN Instructor_Activity ia ON i.instructorSocialSecurityNumber = ia.iASocialSecurityNumber JOIN Activity a ON ia.iAActivityId = a.activityId JOIN Activity_Type at ON a.activityType.id = at.id WHERE ia.iASocialSecurityNumber = :instructorId AND a.activityId = :activityId")
+                .setParameter("instructorId", id)
+                .setParameter("activityId", activityId);
+        return query.getResultList();
+    }
+
+    public Response create(Instructor i){
         em.persist(i);
-        return i;
+        return Response.ok(i.getInstructorSocialSecurityNumber() + "" + i.getInstructorFirstName() + " created").build();
     }
 
     public Response delete(int id){
