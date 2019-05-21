@@ -283,6 +283,20 @@ public class GymOnlineApi extends Application {
         return atr.getById(id);
     }
 
+    @GET
+    @Path("/activity_types/{id}/gyms")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Activity_Type> getActivityTypesByGyms(@PathParam("id") int id){
+        return atr.getGyms(id);
+    }
+
+    @GET
+    @Path("/activity_types/{id}/gyms/{gymId}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<Activity_Type> getActivityTypesByGymsById(@PathParam("id") int id, @PathParam("gymId") int gymId){
+        return atr.getGymsById(id, gymId);
+    }
+
     // -------- Update -------- //
 
     // -------- Delete -------- //

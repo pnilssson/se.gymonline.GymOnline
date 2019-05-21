@@ -31,6 +31,21 @@ public class ActivityTypeRepository {
         return Response.ok(activity_type.getActivityGymId() + " deleted.").build();
     }
 
+
+    public List<Activity_Type> getGyms (int id){
+        Query query = em.createQuery("SELECT at, g FROM Gym g JOIN Activity a on g.gymId = a.activityGym JOIN Activity_Type at on a.activityType = at.activityGymId WHERE at.activityGymId = :activityGymId")
+                .setParameter("activityGymId", id);
+        return query.getResultList();
+    }
+
+    public List<Activity_Type> getGymsById (int id, int gymId){
+        Query query = em.createQuery("SELECT at, g FROM Gym g JOIN Activity a on g.gymId = a.activityGym JOIN Activity_Type at on a.activityType = at.activityGymId WHERE at.activityGymId = :activityGymId AND g.gymId = :gymId")
+                .setParameter("activityGymId", id)
+                .setParameter("gymId", gymId);
+        return query.getResultList();
+    }
+
+
     @Transactional
     public Response post(Activity_Type activity_type){
         em.persist(activity_type);
