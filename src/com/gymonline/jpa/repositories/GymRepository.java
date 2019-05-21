@@ -43,6 +43,7 @@ public class GymRepository {
         return query.getResultList();
     }
 
+    @Transactional
     public Response delete(int id){
         Gym gym = em.find(Gym.class, id);
         em.remove(gym);
