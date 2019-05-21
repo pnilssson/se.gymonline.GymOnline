@@ -13,6 +13,12 @@ public class ActivityRepository {
     @PersistenceContext(unitName = "GymOnlinePU")
     private EntityManager em;
 
+    @Transactional
+    public Response post(Activity activity){
+        em.persist(activity);
+        return Response.ok(activity.getActivityType() + " on the " + activity.getActivityDate() + " added.").build();
+    }
+
     public List<Activity> getAll(){
         Query query = em.createQuery("SELECT a FROM Activity a");
         return query.getResultList();
@@ -29,10 +35,10 @@ public class ActivityRepository {
         em.remove(activity);
         return Response.ok(activity.getActivityId() + " " + activity.getActivityDate() + " deleted.").build();
     }
-    @Transactional
-    public Response post(Activity activity){
-        em.persist(activity);
-        return Response.ok(activity.getActivityId() + " added.").build();
-    }
 
+    @Transactional
+    public Response update(Activity newActivity) {
+        em.merge(newActivity);
+        return Response.ok(newActivity.getActivityId() + " Was updated").build();
+    }
 }

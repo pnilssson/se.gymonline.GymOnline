@@ -232,6 +232,14 @@ public class GymOnlineApi extends Application {
         return ir.delete(id);
     }
 
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/instructors/{id}")
+    public Response updateInstructorById(@PathParam("id") int id, Instructor instructor){
+        return ir.update(instructor);
+    }
+
     // -------- Activities -------- //
     // -------- Create -------- //
 
@@ -260,6 +268,13 @@ public class GymOnlineApi extends Application {
     }
 
     // -------- Update -------- //
+
+    @PUT
+    @Path("/activities")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getActivities(Activity activity){
+        return ar.update(activity);
+    }
 
     // -------- Delete -------- //
 
