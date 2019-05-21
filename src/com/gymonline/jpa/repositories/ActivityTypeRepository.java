@@ -39,14 +39,14 @@ public class ActivityTypeRepository {
 
 
     public List<Activity_Type> getGyms (int id){
-        Query query = em.createQuery("SELECT at, g FROM Gym g JOIN Activity a on g.gymId = a.activityGym JOIN Activity_Type at on a.activityType = at.activityGymId WHERE at.activityGymId = :activityGymId")
-                .setParameter("activityGymId", id);
+        Query query = em.createQuery("SELECT at, g FROM Activity_Type at JOIN Activity a on a.activityType = at.activityTypeId JOIN Gym g on g.gymId = a.activityGym  WHERE at.activityTypeId = :activityTypeId")
+                .setParameter("activityTypeId", id);
         return query.getResultList();
     }
 
     public List<Activity_Type> getGymsById (int id, int gymId){
-        Query query = em.createQuery("SELECT at, g FROM Gym g JOIN Activity a on g.gymId = a.activityGym JOIN Activity_Type at on a.activityType = at.activityGymId WHERE at.activityGymId = :activityGymId AND g.gymId = :gymId")
-                .setParameter("activityGymId", id)
+        Query query = em.createQuery("SELECT at, g FROM Gym g JOIN Activity a on g.gymId = a.activityGym JOIN Activity_Type at on a.activityType = at.activityTypeId WHERE at.activityTypeId = :activityTypeId AND g.gymId = :gymId")
+                .setParameter("activityTypeId", id)
                 .setParameter("gymId", gymId);
         return query.getResultList();
     }
