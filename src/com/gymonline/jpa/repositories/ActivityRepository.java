@@ -35,4 +35,11 @@ public class ActivityRepository {
         return Response.ok(activity.getActivityId() + " added.").build();
     }
 
+    @Transactional
+    public Response update(Activity newActivity) {
+
+
+        em.merge(newActivity);
+        return Response.ok(newActivity.getActivityId() + " Was updated").build();
+    }
 }
