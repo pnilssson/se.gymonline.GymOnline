@@ -29,7 +29,7 @@ public class CustomerRepository {
 
     public List<Customer> getActivities(int id){
 
-        Query query = em.createQuery("SELECT c.customerFirstName, at.activityTypeName, a.activityDate FROM Customer c join Customer_Activity ca on c.id = ca.cACustomerId join Activity a on ca.cAActivityId = a.activityId join Activity_Type at on a.activityType.id = at.id WHERE c.id = :customerId") .setParameter("customerId", id);
+        Query query = em.createQuery("SELECT c.customerFirstName, at.activityTypeName, a.activityDate FROM Customer c join Customer_Activity ca on c.id = ca.cACustomerId join Activity a on ca.cAActivityId = a.activityId join Activity_Type at on a.activityType = at.id WHERE c.id = :customerId") .setParameter("customerId", id);
         return query.getResultList();
     }
 

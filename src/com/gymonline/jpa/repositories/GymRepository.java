@@ -31,13 +31,13 @@ public class GymRepository {
     }
 
     public List<Gym> getActivities(int id){
-        Query query = em.createQuery("SELECT g.gymName, g.gymRating, g.gymAdress, g.gymZipCode, g.city, a.activityId, a.activityRating, a.activityPrice, a.activityPopularity, a.activityDate, a.activityDuration, at.activityTypeName FROM Activity a JOIN a.activityType at JOIN a.activityGym g WHERE g.gymId = :gymId")
+        Query query = em.createQuery("SELECT g.gymName, g.gymRating, g.gymAdress, g.gymZipCode, g.city, a.activityId, a.activityRating, a.activityPrice, a.activityPopularity, a.activityDate, a.activityDuration, at.activityTypeName FROM Gym g join Activity a JOIN Activity_Type at JOIN a.activityGym atg WHERE g.gymId = :gymId")
                 .setParameter("gymId", id);
         return query.getResultList();
     }
 
     public List<Gym> getActivityById(int id, int activityId){
-        Query query = em.createQuery("SELECT g.gymName, g.gymRating, g.gymAdress, g.gymZipCode, g.city, a.activityId, a.activityRating, a.activityPrice, a.activityPopularity, a.activityDate, a.activityDuration, at.activityTypeName FROM Activity a JOIN a.activityType at JOIN a.activityGym g WHERE g.gymId = :gymId AND a.activityId = :activityId")
+        Query query = em.createQuery("SELECT g.gymName, g.gymRating, g.gymAdress, g.gymZipCode, g.city, a.activityId, a.activityRating, a.activityPrice, a.activityPopularity, a.activityDate, a.activityDuration, at.activityTypeName FROM Gym g join Activity a JOIN Activity_Type at JOIN a.activityGym atg WHERE g.gymId = :gymId AND a.activityId = :activityId")
                 .setParameter("gymId", id)
                 .setParameter("activityId", activityId);
         return query.getResultList();
