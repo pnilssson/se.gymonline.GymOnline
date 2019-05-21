@@ -5,6 +5,7 @@ import com.gymonline.jpa.models.Instructor;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
@@ -12,6 +13,12 @@ public class InstructorRepository {
 
     @PersistenceContext(unitName = "GymOnlinePU")
     private EntityManager em;
+
+    @Transactional
+    public Response create(Instructor i){
+        em.persist(i);
+        return Response.ok(i.getInstructorId() + " " + i.getInstructorFirstName() + " created").build();
+    }
 
     public List<Instructor> getAll(){
         Query query = em.createQuery("SELECT i from Instructor i");
@@ -37,11 +44,7 @@ public class InstructorRepository {
         return query.getResultList();
     }
 
-    public Response create(Instructor i){
-        em.persist(i);
-        return Response.ok(i.getInstructorId() + "" + i.getInstructorFirstName() + " created").build();
-    }
-
+    @Transactional
     public Response delete(int id){
         Instructor instructor = em.find(Instructor.class, id);
         em.remove(instructor);

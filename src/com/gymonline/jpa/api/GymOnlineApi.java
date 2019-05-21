@@ -42,9 +42,8 @@ public class GymOnlineApi extends Application {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/customers")
-    public Customer postCustomer(Customer c) {
-        c = cur.create(c);
-        return c;
+    public Response postCustomer(Customer c) {
+        return cur.create(c);
     }
 
     // -------- Read -------- //

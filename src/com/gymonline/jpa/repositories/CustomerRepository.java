@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import javax.ws.rs.core.Response;
 
 import java.util.List;
 
@@ -33,8 +34,8 @@ public class CustomerRepository {
     }
 
     @Transactional
-    public Customer create (Customer c){
-        em.persist(c);
-        return c;
+    public Response create(Customer customer){
+        em.persist(customer);
+        return Response.ok(customer.getCustomerFirstName() + " added.").build();
     }
 }
