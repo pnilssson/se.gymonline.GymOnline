@@ -50,5 +50,13 @@ public class InstructorRepository {
         em.remove(instructor);
         return Response.ok(instructor.getInstructorId() + " " + instructor.getInstructorFirstName() + " deleted.").build();
     }
+
+    @Transactional
+    public Response update(Instructor newInstructor){
+
+
+        em.merge(newInstructor);
+        return Response.ok("test").build();
+    }
 }
 
