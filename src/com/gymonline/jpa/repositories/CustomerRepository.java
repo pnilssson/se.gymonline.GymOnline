@@ -40,6 +40,13 @@ public class CustomerRepository {
     }
 
     @Transactional
+    public Response delete(int id){
+        Customer customer = em.find(Customer.class, id);
+        em.remove(customer);
+        return Response.ok(customer.getCustomerFirstName() + " deleted.").build();
+    }
+
+    @Transactional
     public Response update(Customer customer){
         em.merge(customer);
         return Response.ok(customer.getCustomerFirstName() + " updated.").build();

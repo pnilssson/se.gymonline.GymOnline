@@ -81,6 +81,13 @@ public class GymOnlineApi extends Application {
 
     // -------- Delete -------- //
 
+    @DELETE
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/customers/{id}")
+    public Response deleteCustomer(@PathParam("id") int id){
+        return cur.delete(id);
+    }
 
     // -------- Gyms -------- //
     // -------- Create -------- //
@@ -214,7 +221,7 @@ public class GymOnlineApi extends Application {
     }
 
     @GET
-    @Path("/gyms/{id}/activities/{activityId}")
+    @Path("/instructors/{id}/activities/{activityId}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Instructor> getSpecificInstructorActivities(@PathParam("id") int id, @PathParam("activityId") int activityId){
         return ir.getActivityById(id, activityId);
