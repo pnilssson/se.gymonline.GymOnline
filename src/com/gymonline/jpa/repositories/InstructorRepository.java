@@ -54,9 +54,8 @@ public class InstructorRepository {
     @Transactional
     public Response update(Instructor newInstructor){
 
-
         em.merge(newInstructor);
-        return Response.ok("test").build();
+        return Response.ok(newInstructor.getInstructorFirstName() + " Was updated").build();
     }
 }
 

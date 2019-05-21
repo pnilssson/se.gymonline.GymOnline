@@ -35,4 +35,10 @@ public class ActivityRepository {
         em.remove(activity);
         return Response.ok(activity.getActivityId() + " " + activity.getActivityDate() + " deleted.").build();
     }
+
+    @Transactional
+    public Response update(Activity newActivity) {
+        em.merge(newActivity);
+        return Response.ok(newActivity.getActivityId() + " Was updated").build();
+    }
 }
