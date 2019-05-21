@@ -110,7 +110,7 @@ public class GymOnlineApi extends Application {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/gyms")
+    @Path("/cities")
     public Response postCity(City c){
         return cr.post(c);
     }
