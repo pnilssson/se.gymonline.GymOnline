@@ -38,4 +38,10 @@ public class CustomerRepository {
         em.persist(customer);
         return Response.ok(customer.getCustomerFirstName() + " added.").build();
     }
+
+    @Transactional
+    public Response update(Customer customer){
+        em.merge(customer);
+        return Response.ok(customer.getCustomerFirstName() + " updated.").build();
+    }
 }

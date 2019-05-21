@@ -71,6 +71,14 @@ public class GymOnlineApi extends Application {
 
     // -------- Update -------- //
 
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/customers")
+    public Response updateCustomer(Customer customer){
+        return cur.update(customer);
+    }
+
     // -------- Delete -------- //
 
 
