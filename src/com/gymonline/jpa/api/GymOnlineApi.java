@@ -32,6 +32,8 @@ public class GymOnlineApi extends Application {
     private CustomerRepository cur;
     @Inject
     private ActivityRepository ar;
+    @Inject
+    private ActivityTypeRepository atr;
 
     // -------- Customers -------- //
     // -------- Create -------- //
@@ -253,4 +255,45 @@ public class GymOnlineApi extends Application {
     public Response delete(@PathParam("id") int id){
         return ar.delete(id);
     }
+
+
+    // -------- Activity_Type -------- //
+    // -------- Create -------- //
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/activity_types")
+    public Response postActivityType(Activity_Type at){
+        return atr.post(at);
+    }
+
+    // -------- Read -------- //
+
+    @GET
+    @Path("/activity_types")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Activity_Type> getActivityTypes(){
+        return atr.getAll();
+    }
+
+    @GET
+    @Path("/activity_types/{id}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<Activity_Type> getActivityTypesById(@PathParam("id") int id){
+        return atr.getById(id);
+    }
+
+    // -------- Update -------- //
+
+    // -------- Delete -------- //
+
+    @DELETE
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/activity_types/{id}")
+    public Response deleteActivityTypes(@PathParam("id") int id){
+        return atr.delete(id);
+    }
+
 }
