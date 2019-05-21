@@ -33,6 +33,9 @@ public class GymOnlineApi extends Application {
     @Inject
     private ActivityRepository ar;
 
+    // -------- Customers -------- //
+    // -------- Create -------- //
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -41,6 +44,8 @@ public class GymOnlineApi extends Application {
         c = cur.create(c);
         return c;
     }
+
+    // -------- Read -------- //
 
     @GET
     @Path("/customers")
@@ -63,6 +68,14 @@ public class GymOnlineApi extends Application {
         return cur.getById(id);
     }
 
+    // -------- Update -------- //
+
+    // -------- Delete -------- //
+
+
+    // -------- Gyms -------- //
+    // -------- Create -------- //
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -70,6 +83,8 @@ public class GymOnlineApi extends Application {
     public Response postGym(Gym g){
         return gr.post(g);
     }
+
+    // -------- Read -------- //
 
     @GET
     @Path("/gyms")
@@ -82,7 +97,7 @@ public class GymOnlineApi extends Application {
     @Path("/gyms/{id}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Gym> getGymById(@PathParam("id") int id){
-            return gr.getById(id);
+        return gr.getById(id);
     }
 
     @GET
@@ -99,6 +114,10 @@ public class GymOnlineApi extends Application {
         return gr.getActivityById(id, activityId);
     }
 
+    // -------- Update -------- //
+
+    // -------- Delete -------- //
+
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
@@ -107,6 +126,9 @@ public class GymOnlineApi extends Application {
         return gr.delete(id);
     }
 
+    // -------- Cities -------- //
+    // -------- Create -------- //
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -114,6 +136,8 @@ public class GymOnlineApi extends Application {
     public Response postCity(City c){
         return cr.post(c);
     }
+
+    // -------- Read -------- //
 
     @GET
     @Path("/cities")
@@ -129,6 +153,17 @@ public class GymOnlineApi extends Application {
         return cr.getById(id);
     }
 
+    // -------- Update -------- //
+
+    // -------- Delete -------- //
+
+
+
+
+
+    // -------- Instructors -------- //
+    // -------- Create -------- //
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
@@ -136,6 +171,9 @@ public class GymOnlineApi extends Application {
     public Response postInstructor(Instructor i){
         return ir.create(i);
     }
+
+
+    // -------- Read -------- //
 
     @GET
     @Path("/instructors")
@@ -165,6 +203,10 @@ public class GymOnlineApi extends Application {
         return ir.getActivityById(id, activityId);
     }
 
+    // -------- Update -------- //
+
+    // -------- Delete -------- //
+
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
@@ -173,6 +215,9 @@ public class GymOnlineApi extends Application {
         return ir.delete(id);
     }
 
+    // -------- Activities -------- //
+    // -------- Create -------- //
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -180,6 +225,8 @@ public class GymOnlineApi extends Application {
     public Response postActivity(Activity a){
         return ar.post(a);
     }
+
+    // -------- Read -------- //
 
     @GET
     @Path("/activities")
@@ -194,6 +241,10 @@ public class GymOnlineApi extends Application {
     public List<Activity> getActivitiesById(@PathParam("id") int id){
         return ar.getById(id);
     }
+
+    // -------- Update -------- //
+
+    // -------- Delete -------- //
 
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
