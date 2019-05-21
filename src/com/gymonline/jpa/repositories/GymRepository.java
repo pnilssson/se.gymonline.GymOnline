@@ -50,4 +50,10 @@ public class GymRepository {
         return Response.ok(gym.getGymName() + " deleted.").build();
     }
 
+    @Transactional
+    public Response update(Gym gym){
+        em.merge(gym);
+        return Response.ok(gym.getGymName() + " updated.").build();
+    }
+
 }
