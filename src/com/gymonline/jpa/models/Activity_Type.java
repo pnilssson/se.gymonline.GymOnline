@@ -11,25 +11,25 @@ import javax.xml.bind.annotation.XmlType;
 @Entity
 @Table(name = "Activity_Type")
 @XmlRootElement
-@XmlType(name="Activity_Type", propOrder = {"activityGymId", "activityTypeName"})
-@JsonPropertyOrder({"activityGymId", "activityTypeName"})
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "activityGymId")
+@XmlType(name="Activity_Type", propOrder = {"activityTypeId", "activityTypeName"})
+@JsonPropertyOrder({"activityTypeId", "activityTypeName"})
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "activityTypeId")
 public class Activity_Type {
 
     @Id
     @Column(name = "Activity_Type_Id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer activityGymId;
+    private Integer activityTypeId;
 
     @Column(name = "Activity_Type_Name")
     private String activityTypeName;
 
-    public Integer getActivityGymId() {
-        return activityGymId;
+    public Integer getActivityTypeId() {
+        return activityTypeId;
     }
 
-    public void setActivityGymId(Integer activityGymId) {
-        this.activityGymId = activityGymId;
+    public void setActivityTypeId(Integer activityTypeId) {
+        this.activityTypeId = activityTypeId;
     }
 
     public String getActivityTypeName() {

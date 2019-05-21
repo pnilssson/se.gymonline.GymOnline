@@ -71,8 +71,23 @@ public class GymOnlineApi extends Application {
 
     // -------- Update -------- //
 
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/customers")
+    public Response updateCustomer(Customer customer){
+        return cur.update(customer);
+    }
+
     // -------- Delete -------- //
 
+    @DELETE
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/customers/{id}")
+    public Response deleteCustomer(@PathParam("id") int id){
+        return cur.delete(id);
+    }
 
     // -------- Gyms -------- //
     // -------- Create -------- //
@@ -206,7 +221,7 @@ public class GymOnlineApi extends Application {
     }
 
     @GET
-    @Path("/gyms/{id}/activities/{activityId}")
+    @Path("/instructors/{id}/activities/{activityId}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Instructor> getSpecificInstructorActivities(@PathParam("id") int id, @PathParam("activityId") int activityId){
         return ir.getActivityById(id, activityId);
@@ -304,6 +319,20 @@ public class GymOnlineApi extends Application {
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Activity_Type> getActivityTypesById(@PathParam("id") int id){
         return atr.getById(id);
+    }
+
+    @GET
+    @Path("/activity_types/{id}/gyms")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Activity_Type> getActivityTypesByGyms(@PathParam("id") int id){
+        return atr.getGyms(id);
+    }
+
+    @GET
+    @Path("/activity_types/{id}/gyms/{gymId}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<Activity_Type> getActivityTypesByGymsById(@PathParam("id") int id, @PathParam("gymId") int gymId){
+        return atr.getGymsById(id, gymId);
     }
 
     // -------- Update -------- //
