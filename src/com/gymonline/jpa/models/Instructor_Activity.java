@@ -17,7 +17,7 @@ public class Instructor_Activity {
 
     @Id
     @Column(name = "IA_Id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer iAId;
 
     @Column(name = "IA_Instructor_Id")

@@ -18,7 +18,7 @@ public class Activity {
 
     @Id
     @Column(name = "Activity_Id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer activityId;
 
     @Column(name = "Activity_Rating")

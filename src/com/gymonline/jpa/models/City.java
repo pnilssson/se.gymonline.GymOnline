@@ -20,7 +20,7 @@ public class City {
 
     @Id
     @Column(name = "City_Id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cityId;
 
     @Column(name = "City_Name")
