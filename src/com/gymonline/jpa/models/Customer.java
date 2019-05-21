@@ -18,6 +18,7 @@ public class Customer {
 
     @Id
     @Column(name = "Customer_Id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer customerId;
 
     @Column(name = "Customer_DOB")
