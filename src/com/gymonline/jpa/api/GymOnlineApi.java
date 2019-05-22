@@ -54,19 +54,18 @@ public class GymOnlineApi extends Application {
     public List<Customer> getCustomers(){
         return cur.getAll();
     }
+    @GET
+    @Path("/customers/{id}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<Customer> getCustomersById(@PathParam("id") int id){
+        return cur.getById(id);
+    }
 
     @GET
     @Path("/customers/{id}/activities")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Customer> getCustomersActivities(@PathParam("id") int id){
         return cur.getActivities(id);
-    }
-
-    @GET
-    @Path("/customers/{id}")
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public List<Customer> getCustomersById(@PathParam("id") int id){
-        return cur.getById(id);
     }
 
     // -------- Update -------- //
