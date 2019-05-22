@@ -12,5 +12,6 @@
   </head>
   <body>
   $END$
+  <a href="http://localhost:8080/se_gymonline_GymOnline_war_exploded/gymonline/v1.0/customers">Show customers!</a>
   </body>
 </html>
