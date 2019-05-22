@@ -32,13 +32,13 @@ public class InstructorRepository {
     }
 
     public List<Instructor> getActivities(int id){
-        Query query = em.createQuery("SELECT i.instructorId, i.instructorDOB, i.instructorFirstName, i.instructorLastName, i.instructorEmailAddress, i.instructorMobileNumber, i.instructorSalary, a.activityDate, a.activityDuration, a.activityPopularity, a.activityPrice, a.activityRating, at.activityTypeName FROM Instructor i JOIN Instructor_Activity ia ON i.instructorId = ia.instructorId JOIN Activity a ON ia.iAActivityId = a.activityId JOIN Activity_Type at ON a.activityType.id = at.id WHERE ia.iASocialSecurityNumber = :instructorId")
+        Query query = em.createQuery("SELECT a FROM Instructor_Activity ia JOIN Activity a on a.activityId = ia.iAActivityId JOIN Instructor i on i.instructorId = ia.iAInstructorId WHERE ia.iAInstructorId = :instructorId")
                 .setParameter("instructorId", id);
         return query.getResultList();
     }
 
     public List<Instructor> getActivityById(int id, int activityId){
-        Query query = em.createQuery("SELECT i.instructorId, i.instructorDOB, i.instructorFirstName, i.instructorLastName, i.instructorEmailAddress, i.instructorMobileNumber, i.instructorSalary, a.activityDate, a.activityDuration, a.activityPopularity, a.activityPrice, a.activityRating, at.activityTypeName FROM Instructor i JOIN Instructor_Activity ia ON i.instructorId = ia.instructorId JOIN Activity a ON ia.iAActivityId = a.activityId JOIN Activity_Type at ON a.activityType.id = at.id WHERE ia.iASocialSecurityNumber = :instructorId AND a.activityId = :activityId")
+        Query query = em.createQuery("SELECT a FROM Instructor_Activity ia JOIN Activity a on a.activityId = ia.iAActivityId JOIN Instructor i on i.instructorId = ia.iAInstructorId WHERE ia.iAInstructorId = :instructorId AND ia.iAActivityId = :activityId")
                 .setParameter("instructorId", id)
                 .setParameter("activityId", activityId);
         return query.getResultList();

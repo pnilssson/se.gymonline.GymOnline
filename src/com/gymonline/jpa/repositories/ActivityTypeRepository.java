@@ -30,16 +30,8 @@ public class ActivityTypeRepository {
         return query.getResultList();
     }
 
-    @Transactional
-    public Response delete(int id){
-        Activity_Type activity_type = em.find(Activity_Type.class, id);
-        em.remove(activity_type);
-        return Response.ok(activity_type.getActivityTypeId() + " deleted.").build();
-    }
-
-
     public List<Activity_Type> getGyms (int id){
-        Query query = em.createQuery("SELECT g FROM Activity_Type at JOIN Activity a on a.activityType = at.activityTypeId AND a.activityType = :activityTypeId JOIN Gym g on g.gymId = a.activityGym WHERE at.activityTypeId = :activityTypeId GROUP BY g.gymId")
+        Query query = em.createQuery("SELECT g FROM Activity_Type at JOIN Activity a on a.activityType = at.activityTypeId JOIN Gym g on g.gymId = a.activityGym WHERE at.activityTypeId = :activityTypeId GROUP BY g.gymId")
                 .setParameter("activityTypeId", id);
         return query.getResultList();
     }
