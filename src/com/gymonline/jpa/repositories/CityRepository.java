@@ -29,4 +29,17 @@ public class CityRepository {
         Query query = em.createQuery("SELECT c FROM City c");
         return query.getResultList();
     }
+
+    public List<City> getGymsById(int id, int gymId){
+        Query query = em.createQuery("SELECT g FROM City c JOIN Gym g on g.city = c.cityId WHERE c.cityId = :cityId AND g.gymId = :gymId")
+                .setParameter("cityId", id)
+                .setParameter("gymId", gymId);
+        return query.getResultList();
+    }
+
+    public List<City> getAllGyms(int id){
+        Query query = em.createQuery("SELECT g FROM City c JOIN Gym g on g.city = c.cityId WHERE c.cityId = :cityId")
+                .setParameter("cityId", id);
+        return query.getResultList();
+    }
 }

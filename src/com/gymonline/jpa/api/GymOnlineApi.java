@@ -177,10 +177,24 @@ public class GymOnlineApi extends Application {
         return cr.getById(id);
     }
 
+    @GET
+    @Path("/cities/{id}/gyms")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<City> getCitiesByGyms(@PathParam("id") int id){
+        return cr.getAllGyms(id);
+    }
+
+    @GET
+    @Path("/cities/{id}/gyms/{gymId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<City> getCityByIdByGymsId(@PathParam("id") int id, @PathParam("gymId") int gymId){
+        return cr.getGymsById(id, gymId);
+    }
+
     // -------- Update -------- //
-
+            // Skall ej ha
     // -------- Delete -------- //
-
+            // Skall ej ha
 
 
 
