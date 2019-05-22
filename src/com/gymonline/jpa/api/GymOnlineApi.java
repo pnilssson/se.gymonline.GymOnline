@@ -349,17 +349,8 @@ public class GymOnlineApi extends Application {
         return atr.getActivitiesById(id, gymId, activityId);
     }
 
-
     // -------- Update -------- //
-
+            // Skall ej ha
     // -------- Delete -------- //
-
-    @DELETE
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.TEXT_PLAIN)
-    @Path("/activity_types/{id}")
-    public Response deleteActivityTypes(@PathParam("id") int id){
-        return atr.delete(id);
-    }
-
+            // Skall ej ha
 }
