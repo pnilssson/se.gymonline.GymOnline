@@ -8,10 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>GymOnline</title>
   </head>
   <body>
-  $END$
   <a href="http://localhost:8080/se_gymonline_GymOnline_war_exploded/gymonline/v1.0/customers">Show customers!</a>
   </body>
 </html>

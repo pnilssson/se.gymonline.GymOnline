@@ -54,6 +54,7 @@ public class GymOnlineApi extends Application {
     public List<Customer> getCustomers(){
         return cur.getAll();
     }
+
     @GET
     @Path("/customers/{id}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
