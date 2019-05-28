@@ -39,15 +39,20 @@ public class Auth implements ContainerRequestFilter {
                 String password = tokenizer.nextToken();
                 User user = em.find(User.class, username);
 
-                if (user.getUserName().equals(username) && user.getUserPassword().equals(generateHashString(user.getUserSalt(), password))){
-                    return;
+                try {
+                    if (user.getUserName().equals(username) && user.getUserPassword().equals(generateHashString(user.getUserSalt(), password))){
+                        return;
+                    }
                 }
-            }
+               catch (NullPointerException e){
+
             Response accessDenied = Response
                     .status(Response.Status.UNAUTHORIZED)
                     .entity("User cannot access the resource")
                     .build();
             containerRequestContext.abortWith(accessDenied);
+               }
+        }
         }
     }
 
