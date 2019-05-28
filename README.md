@@ -1,7 +1,7 @@
 # Gym Online
 GymOnline REST API
 
-Gym Online is a program we used to make an api with the use of JPA, Java-RX and Wildfly.
+Gym Online is a program we used to make an api with the use of JPA, JAX-RS and Wildfly.
 
 ## Wildfly
 
