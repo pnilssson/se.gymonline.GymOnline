@@ -2,15 +2,10 @@ package com.gymonline.jpa.api;
 
 import com.gymonline.jpa.business.*;
 import com.gymonline.jpa.models.*;
-import com.gymonline.jpa.repositories.*;
 import com.gymonline.jpa.models.City;
 import com.gymonline.jpa.models.Customer;
 import com.gymonline.jpa.models.Gym;
 import com.gymonline.jpa.models.Instructor;
-import com.gymonline.jpa.repositories.CityRepository;
-import com.gymonline.jpa.repositories.CustomerRepository;
-import com.gymonline.jpa.repositories.GymRepository;
-import com.gymonline.jpa.repositories.InstructorRepository;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -70,6 +65,12 @@ public class GymOnlineApi extends Application {
         return cur.readAllByCriteria(id);
     }
 
+    @GET
+    @Path("/customers/{id}/activities/{activitiesId}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<Customer> getSpecificCustomersActivities(@PathParam("id") int id, @PathParam("activitiesId") int activityId){
+        return cur.readIdByCriteria(id, activityId);
+    }
     // -------- Update -------- //
 
     @PUT

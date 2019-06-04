@@ -23,6 +23,9 @@ public class CustomerBusinessLogic {
     public List<Customer> readAllByCriteria(int id){
         return cur.getActivities(id);
     }
+    public List<Customer> readIdByCriteria(int id, int activityId){
+        return cur.getActivityById(id, activityId);
+    }
     public Response update(Customer customer){
         return cur.update(customer);
     }

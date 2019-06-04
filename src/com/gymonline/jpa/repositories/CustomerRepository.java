@@ -39,6 +39,13 @@ public class CustomerRepository {
         return Response.ok(customer.getCustomerFirstName() + " added.").build();
     }
 
+    public List<Customer> getActivityById(int id, int activityId){
+        Query query = em.createQuery("SELECT c FROM Customer_Activity ca JOIN Customer c on c.customerId = ca.id   WHERE c.id = :customersId AND ca.id = :activityId")
+                .setParameter("customersId", id)
+                .setParameter("activityId", activityId);
+        return query.getResultList();
+    }
+
     @Transactional
     public Response delete(int id){
         Customer customer = em.find(Customer.class, id);
