@@ -1,5 +1,6 @@
 package com.gymonline.jpa.api;
 
+import com.gymonline.jpa.business.*;
 import com.gymonline.jpa.models.*;
 import com.gymonline.jpa.repositories.*;
 import com.gymonline.jpa.models.City;
@@ -23,17 +24,17 @@ import java.util.List;
 public class GymOnlineApi extends Application {
 
     @Inject
-    private GymRepository gr;
+    private GymBusinessLogic gr;
     @Inject
-    private CityRepository cr;
+    private CityBusinessLogic cr;
     @Inject
-    private InstructorRepository ir;
+    private InstructorBusinessLogic ir;
     @Inject
-    private CustomerRepository cur;
+    private CustomerBusinessLogic cur;
     @Inject
-    private ActivityRepository ar;
+    private ActivityBusinessLogic ar;
     @Inject
-    private ActivityTypeRepository atr;
+    private ActivtiyTypeBusinessLogic atr;
 
     // -------- Customers -------- //
     // -------- Create -------- //
