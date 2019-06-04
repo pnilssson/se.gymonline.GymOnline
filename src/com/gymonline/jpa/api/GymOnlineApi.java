@@ -44,7 +44,7 @@ public class GymOnlineApi extends Application {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/customers")
     public Response postCustomer(Customer c) {
-        return cur.create(c);
+        return cur.post(c);
     }
 
     // -------- Read -------- //
@@ -53,21 +53,21 @@ public class GymOnlineApi extends Application {
     @Path("/customers")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Customer> getCustomers(){
-        return cur.getAll();
+        return cur.readAll();
     }
 
     @GET
     @Path("/customers/{id}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Customer> getCustomersById(@PathParam("id") int id){
-        return cur.getById(id);
+        return cur.readById(id);
     }
 
     @GET
     @Path("/customers/{id}/activities")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Customer> getCustomersActivities(@PathParam("id") int id){
-        return cur.getActivities(id);
+        return cur.readAllByCriteria(id);
     }
 
     // -------- Update -------- //
@@ -168,28 +168,28 @@ public class GymOnlineApi extends Application {
     @Path("/cities")
     @Produces(MediaType.APPLICATION_JSON)
     public List<City> getCities(){
-        return cr.getAll();
+        return cr.readAll();
     }
 
     @GET
     @Path("/cities/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<City> getCityById(@PathParam("id") int id){
-        return cr.getById(id);
+        return cr.readById(id);
     }
 
     @GET
     @Path("/cities/{id}/gyms")
     @Produces(MediaType.APPLICATION_JSON)
     public List<City> getCitiesByGyms(@PathParam("id") int id){
-        return cr.getAllGyms(id);
+        return cr.readAllByOneCriteria(id);
     }
 
     @GET
     @Path("/cities/{id}/gyms/{gymId}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<City> getCityByIdByGymsId(@PathParam("id") int id, @PathParam("gymId") int gymId){
-        return cr.getGymsById(id, gymId);
+        return cr.readIdByOneCriteria(id, gymId);
     }
 
     // -------- Update -------- //
