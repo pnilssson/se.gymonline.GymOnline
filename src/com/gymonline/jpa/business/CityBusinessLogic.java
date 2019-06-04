@@ -2,7 +2,6 @@ package com.gymonline.jpa.business;
 
 import com.gymonline.jpa.models.City;
 import com.gymonline.jpa.repositories.CityRepository;
-
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 import java.util.List;

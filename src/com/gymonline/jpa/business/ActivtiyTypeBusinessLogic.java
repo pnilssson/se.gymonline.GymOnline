@@ -2,9 +2,7 @@ package com.gymonline.jpa.business;
 
 import com.gymonline.jpa.models.Activity_Type;
 import com.gymonline.jpa.repositories.ActivityTypeRepository;
-
 import javax.inject.Inject;
-import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
