@@ -44,7 +44,7 @@ public class GymOnlineApi extends Application {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/customers")
     public Response postCustomer(Customer c) {
-        return cur.create(c);
+        return cur.post(c);
     }
 
     // -------- Read -------- //
@@ -53,21 +53,21 @@ public class GymOnlineApi extends Application {
     @Path("/customers")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Customer> getCustomers(){
-        return cur.getAll();
+        return cur.readAll();
     }
 
     @GET
     @Path("/customers/{id}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Customer> getCustomersById(@PathParam("id") int id){
-        return cur.getById(id);
+        return cur.readById(id);
     }
 
     @GET
     @Path("/customers/{id}/activities")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Customer> getCustomersActivities(@PathParam("id") int id){
-        return cur.getActivities(id);
+        return cur.readAllByCriteria(id);
     }
 
     // -------- Update -------- //
