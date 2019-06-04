@@ -208,7 +208,7 @@ public class GymOnlineApi extends Application {
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/instructors")
     public Response postInstructor(Instructor i){
-        return ir.create(i);
+        return ir.post(i);
     }
 
 
