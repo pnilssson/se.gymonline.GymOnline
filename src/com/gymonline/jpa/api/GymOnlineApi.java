@@ -107,28 +107,28 @@ public class GymOnlineApi extends Application {
     @Path("/gyms")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Gym> getGyms(){
-        return gr.getAll();
+        return gr.readAll();
     }
 
     @GET
     @Path("/gyms/{id}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Gym> getGymById(@PathParam("id") int id){
-        return gr.getById(id);
+        return gr.readById(id);
     }
 
     @GET
     @Path("/gyms/{id}/activities")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Gym> getActivityByGym(@PathParam("id") int id){
-        return gr.getActivities(id);
+        return gr.readAllByCriteria(id);
     }
 
     @GET
     @Path("/gyms/{id}/activities/{activityId}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Gym> getSpecificGymActivities(@PathParam("id") int id, @PathParam("activityId") int activityId){
-        return gr.getActivityById(id, activityId);
+        return gr.readIdByCriteria(id, activityId);
     }
 
     // -------- Update -------- //
@@ -218,28 +218,28 @@ public class GymOnlineApi extends Application {
     @Path("/instructors")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Instructor> getInstructors(){
-        return ir.getAll();
+        return ir.readAll();
     }
 
     @GET
     @Path("/instructors/{id}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Instructor> getInstructorById(@PathParam("id") int id){
-        return ir.getById(id);
+        return ir.readById(id);
     }
 
     @GET
     @Path("/instructors/{id}/activities")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Instructor> getActivityByInstructor(@PathParam("id") int id){
-        return ir.getActivities(id);
+        return ir.readAllByCriteria(id);
     }
 
     @GET
     @Path("/instructors/{id}/activities/{activityId}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Instructor> getSpecificInstructorActivities(@PathParam("id") int id, @PathParam("activityId") int activityId){
-        return ir.getActivityById(id, activityId);
+        return ir.readIdByCriteria(id, activityId);
     }
 
     // -------- Update -------- //
@@ -326,42 +326,42 @@ public class GymOnlineApi extends Application {
     @Path("/activity_types")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Activity_Type> getActivityTypes(){
-        return atr.getAll();
+        return atr.readAll();
     }
 
     @GET
     @Path("/activity_types/{id}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Activity_Type> getActivityTypesById(@PathParam("id") int id){
-        return atr.getById(id);
+        return atr.readById(id);
     }
 
     @GET
     @Path("/activity_types/{id}/gyms")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Activity_Type> getActivityTypesByGyms(@PathParam("id") int id){
-        return atr.getGyms(id);
+        return atr.realAllByCriteria(id);
     }
 
     @GET
     @Path("/activity_types/{id}/gyms/{gymId}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Activity_Type> getActivityTypesByGymsById(@PathParam("id") int id, @PathParam("gymId") int gymId){
-        return atr.getGymsById(id, gymId);
+        return atr.readIdByCriteria(id, gymId);
     }
 
     @GET
     @Path("/activity_types/{id}/gyms/{gymId}/activities")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Activity_Type> getActivityTypesByGymsByActivities(@PathParam("id") int id, @PathParam("gymId") int gymId){
-        return atr.getActivities(id, gymId);
+        return atr.realAllByMultipleCriteria(id, gymId);
     }
 
     @GET
     @Path("/activity_types/{id}/gyms/{gymId}/activities/{activityId}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Activity_Type> getActivityTypesByGymsByActivitiesById(@PathParam("id") int id, @PathParam("gymId") int gymId, @PathParam("activityId") int activityId){
-        return atr.getActivitiesById(id, gymId, activityId);
+        return atr.readIdByMultipleCriteria(id, gymId, activityId);
     }
 
     // -------- Update -------- //

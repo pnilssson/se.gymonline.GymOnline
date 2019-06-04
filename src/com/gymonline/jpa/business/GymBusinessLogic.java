@@ -5,7 +5,9 @@ import com.gymonline.jpa.repositories.GymRepository;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 public class GymBusinessLogic {
     @Inject
@@ -14,5 +16,27 @@ public class GymBusinessLogic {
     public Response post(Gym g){
         return gr.post(g);
     }
+    public List<Gym> readAll(){
+        return gr.getAll();
+    }
+    public List<Gym> readById(int id){
+        return gr.getById(id);
+    }
+    public List<Gym> readAllByCriteria(int id){
+        return gr.getActivities(id);
+    }
+
+    public List<Gym> readIdByCriteria(int id, int activityId){
+        return gr.getActivityById(id, activityId);
+    }
+
+    public Response update(Gym gym){
+        return gr.update(gym);
+    }
+
+    public Response delete(int id){
+        return gr.delete(id);
+    }
+
 
 }
