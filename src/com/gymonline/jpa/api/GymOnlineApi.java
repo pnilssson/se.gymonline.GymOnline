@@ -76,7 +76,7 @@ public class GymOnlineApi extends Application {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    @Path("/customers")
+    @Path("/customers/{id}")
     public Response updateCustomer(Customer customer){
         return cur.update(customer);
     }
@@ -137,7 +137,7 @@ public class GymOnlineApi extends Application {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    @Path("/gyms")
+    @Path("/gyms/{id}")
     public Response update(Gym gym){
         return gr.update(gym);
     }
@@ -293,7 +293,7 @@ public class GymOnlineApi extends Application {
     // -------- Update -------- //
 
     @PUT
-    @Path("/activities")
+    @Path("/activities/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getActivities(Activity activity){
         return ar.update(activity);
